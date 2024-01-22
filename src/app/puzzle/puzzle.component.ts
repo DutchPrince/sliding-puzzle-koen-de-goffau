@@ -24,6 +24,7 @@ export class PuzzleComponent {
   public gridY = 4;
 
   private tm = gsap.timeline({});
+  private tileImg = 'assets/images/Cropped_Image-min.png';
 
   /**
    * Stole this from the internet, but it checks if two pieces are adjacent inside a 4x4 grid.
@@ -55,7 +56,7 @@ export class PuzzleComponent {
    */
   createPuzzle = () => {
     const img = new Image();
-    img.src = 'assets/images/Cropped_Image-min.png';
+    img.src = this.tileImg;
     img.onload = () => {
       const pieceWidth = Math.floor(img.width / this.gridX);
       const pieceHeight = Math.floor(img.height / this.gridY);
@@ -94,6 +95,12 @@ export class PuzzleComponent {
 
   /**
    * Swaps the piece with the hidden piece.
+   * - Checks if the piece is adjacent to the hidden piece
+   * - Creates a clone of the piece
+   * - Animates the clone to the hidden piece
+   * - Swaps the pieces in the array
+   * - Removes the clone
+   * - Checks if the puzzle is solved
    * @param index The index of the piece to swap
    */
   swap = (index: number) => {
@@ -139,6 +146,10 @@ export class PuzzleComponent {
     }
   }
 
+  /**
+   * Gets all the puzzle pieces elements from the DOM.
+   * @returns All the puzzle pieces
+   */
   pieceEls = () => this.containerRef.nativeElement.querySelectorAll('app-puzzle-piece');
 
   /**

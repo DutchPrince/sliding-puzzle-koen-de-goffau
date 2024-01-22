@@ -1,0 +1,4 @@
+<div #containerRef class="container" [style.grid-template-columns]="'repeat(' + gridX + ', 100px)'"
+  [style.grid-template-rows]="'repeat(' + gridY + ', 100px)'">
+  <app-puzzle-piece *ngFor="let piece of pieces; index as i" [piece]="piece" (click)="swap(i)"></app-puzzle-piece>
+</div>

@@ -1,4 +1,15 @@
-<div #containerRef class="container" [style.grid-template-columns]="'repeat(' + gridX + ', 100px)'"
-  [style.grid-template-rows]="'repeat(' + gridY + ', 100px)'">
-  <app-puzzle-piece *ngFor="let piece of pieces; index as i" [piece]="piece" (click)="swap(i)"></app-puzzle-piece>
+<app-puzzle-timer [playing]="!isSolved() && isPlaying()"></app-puzzle-timer>
+
+<div #puzzleContainerRef [style]="{'--gridX': gridX, '--gridY': gridY}"
+  class="{{isSolved() ? 'is-solved' : ''}} container">
+  <app-puzzle-piece *ngFor="let piece of pieces; index as i" [piece]="piece" (click)="swap(i)"
+    [solved]="isSolved()"></app-puzzle-piece>
 </div>
+
+<form (submit)="onSubmit($event)" class="form">
+  <div class="form-file-upload">
+    <input type="file" name="puzzle_image" id="puzzle_image" (change)="clearErrorMessage($event.target)" />
+    <label for="puzzle_image">Upload a new image</label>
+  </div>
+  <button type="submit">{{ 'Replay Game' | uppercase }}</button>
+</form>

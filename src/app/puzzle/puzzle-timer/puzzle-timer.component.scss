@@ -1,0 +1,36 @@
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    animation: timer 1s linear infinite;
+    animation-play-state: paused;
+    &.is-playing {
+        animation-play-state: running;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .timer {
+        font-size: 20px;
+        padding: 5px;
+    }
+}
+
+@keyframes timer {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

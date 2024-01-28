@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class PuzzlePieceComponent {
   @Input() piece = { img: '', placement: 0, hidden: false };
+  @Input() solved = false;
 }

@@ -2,9 +2,8 @@
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    width: 100px;
-    height: 100px;
+    width: var(--piece-size, 100px);
+    height: var(--piece-siz, 100px);
     img {
         position: absolute;
         inset: 0;
@@ -15,5 +14,16 @@
         cursor: default;
         visibility: hidden;
         pointer-events: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .piece {
+        width: var(--piece-size-mobile, 50px);
+        height: var(--piece-size-mobile, 50px);
+        img {
+            width: var(--piece-size-mobile, 50px);
+            height: var(--piece-size-mobile, 50px);
+        }
     }
 }

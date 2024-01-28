@@ -1,4 +1,86 @@
 .container {
+    --gridX: 4;
+    --gridY: 4;
+    position: relative;
     display: grid;
     grid-gap: 10px;
+    grid-template-columns: repeat(var(--gridX), var(--piece-size, 100px));
+    grid-template-rows: repeat(var(--gridY), var(--piece-size, 100px));
+    &.is-solved {
+        grid-gap: 0;
+    }
+}
+
+.form {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    .form-file-upload {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: rgba($color: #cbcbcb, $alpha: 0.3);
+        input[type="file"] {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            &:active+label {
+                outline: 1px dotted #000;
+            }
+        }
+        label {
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1;
+            width: 100%;
+        }
+    }
+    button[type="submit"] {
+        display: inline-block;
+        padding: 10px 20px;
+        box-sizing: content-box;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 1;
+        font-family: 'Roboto', sans-serif;
+        background-color: transparent;
+        border: 0.5px solid #000;
+        cursor: pointer;
+        width: 20%;
+        white-space: pre;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        grid-gap: 5px;
+        grid-template-columns: repeat(var(--gridX), var(--piece-size-mobile, 50px));
+        grid-template-rows: repeat(var(--gridY), var(--piece-size-mobile, 50px));
+        transform: scale(1.03);
+        z-index: 1;
+    }
+    .form {
+        flex-direction: column;
+        margin-top: 20px;
+        .form-file-upload {
+            margin-bottom: 10px;
+            label {
+                padding: 40px 5px;
+                text-align: center;
+                border: 0.5px dotted #000;
+            }
+        }
+        button[type="submit"] {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 100px;
+        }
+    }
 }

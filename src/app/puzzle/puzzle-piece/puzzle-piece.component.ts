@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PuzzlePiece } from '../models/puzzle-piece.interface';
 
 @Component({
   selector: 'app-puzzle-piece',
@@ -8,6 +9,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './puzzle-piece.component.scss'
 })
 export class PuzzlePieceComponent {
-  @Input() piece = { img: '', placement: 0, hidden: false };
+  @Input() piece: PuzzlePiece = { img: '', placement: 0, hidden: false };
   @Input() solved = false;
 }
